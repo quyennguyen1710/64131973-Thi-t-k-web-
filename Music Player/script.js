@@ -12,7 +12,12 @@ const currTime = document.querySelector('#currTime');
 const durTime = document.querySelector('#durTime');
 
 // Tên bài hát
-const songs = ['hey', 'summer', 'ukulele'];
+const songs =['Chỉ Muốn Đến Em Thật Gần', 
+							'Đám Cưới Nha', 
+							'Em Là Nhất',
+							'Hồng Nhan',
+							'Vì Anh Là Gió',
+							'Yêu Đơn Phương Là Gì'];
 
 // Theo dõi bài hát
 let songIndex = 2;
@@ -34,6 +39,11 @@ function playSong() {
   playBtn.querySelector('i.fas').classList.add('fa-pause');
 
   audio.play();
+}
+
+function tennhac(songName) {
+  loadSong(songName);
+  playSong(); 
 }
 
 // Tạm dừng bài hát
@@ -142,9 +152,11 @@ function DurTime (e) {
 	} 
 
 	// xác định thời lượng giây
+
 	get_sec_d (duration);
 
 	// thay đổi thời lượng DOM
+	
 	durTime.innerHTML = min_d +':'+ sec_d;
 		
 };

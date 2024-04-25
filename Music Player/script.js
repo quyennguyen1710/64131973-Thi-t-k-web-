@@ -11,16 +11,16 @@ const cover = document.getElementById('cover');
 const currTime = document.querySelector('#currTime');
 const durTime = document.querySelector('#durTime');
 
-// Song titles
+// Tên bài hát
 const songs = ['hey', 'summer', 'ukulele'];
 
-// Keep track of song
+// Theo dõi bài hát
 let songIndex = 2;
 
-// Initially load song details into DOM
+// Ban đầu tải chi tiết bài hát vào DOM
 loadSong(songs[songIndex]);
 
-// Update song details
+// Cập nhật chi tiết bài hát
 function loadSong(song) {
   title.innerText = song;
   audio.src = `music/${song}.mp3`;
@@ -36,7 +36,7 @@ function playSong() {
   audio.play();
 }
 
-// Pause song
+// Tạm dừng bài hát
 function pauseSong() {
   musicContainer.classList.remove('play');
   playBtn.querySelector('i.fas').classList.add('fa-play');
@@ -45,7 +45,7 @@ function pauseSong() {
   audio.pause();
 }
 
-// Previous song
+// Bài hát trước
 function prevSong() {
   songIndex--;
 
@@ -58,7 +58,7 @@ function prevSong() {
   playSong();
 }
 
-// Next song
+// Bài hát tiếp theo
 function nextSong() {
   songIndex++;
 
@@ -71,14 +71,14 @@ function nextSong() {
   playSong();
 }
 
-// Update progress bar
+// Cập nhật thanh tiến trình
 function updateProgress(e) {
   const { duration, currentTime } = e.srcElement;
   const progressPercent = (currentTime / duration) * 100;
   progress.style.width = `${progressPercent}%`;
 }
 
-// Set progress bar
+// Đặt thanh tiến trình
 function setProgress(e) {
   const width = this.clientWidth;
   const clickX = e.offsetX;
@@ -87,18 +87,18 @@ function setProgress(e) {
   audio.currentTime = (clickX / width) * duration;
 }
 
-//get duration & currentTime for Time of song
+//lấy thời lượng và thời gian hiện tại cho thời gian của bài hát
 function DurTime (e) {
 	const {duration,currentTime} = e.srcElement;
 	var sec;
 	var sec_d;
 
-	// define minutes currentTime
+	// xác định phút hiện tại thời gian
 	let min = (currentTime==null)? 0:
 	 Math.floor(currentTime/60);
 	 min = min <10 ? '0'+min:min;
 
-	// define seconds currentTime
+	// xác định giây thời gian hiện tại
 	function get_sec (x) {
 		if(Math.floor(x) >= 60){
 			
@@ -116,10 +116,10 @@ function DurTime (e) {
 
 	get_sec (currentTime,sec);
 
-	// change currentTime DOM
+	// thay đổi DOM thời gian hiện tại
 	currTime.innerHTML = min +':'+ sec;
 
-	// define minutes duration
+	// xác định thời lượng phút
 	let min_d = (isNaN(duration) === true)? '0':
 		Math.floor(duration/60);
 	 min_d = min_d <10 ? '0'+min_d:min_d;
@@ -141,16 +141,16 @@ function DurTime (e) {
 		 }
 	} 
 
-	// define seconds duration
+	// xác định thời lượng giây
 	
 	get_sec_d (duration);
 
-	// change duration DOM
+	// thay đổi thời lượng DOM
 	durTime.innerHTML = min_d +':'+ sec_d;
 		
 };
 
-// Event listeners
+// Người nghe sự kiện
 playBtn.addEventListener('click', () => {
   const isPlaying = musicContainer.classList.contains('play');
 
@@ -161,18 +161,18 @@ playBtn.addEventListener('click', () => {
   }
 });
 
-// Change song
+// Thay đổi bài hát
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 
-// Time/song update
+// Cập nhật thời gian/bài hát
 audio.addEventListener('timeupdate', updateProgress);
 
-// Click on progress bar
+// Bấm vào thanh tiến trình
 progressContainer.addEventListener('click', setProgress);
 
-// Song ends
+// Kết thúc bài hát
 audio.addEventListener('ended', nextSong);
 
-// Time of song
+// Thời gian của bài hát
 audio.addEventListener('timeupdate',DurTime);

@@ -142,7 +142,6 @@ function DurTime (e) {
 	} 
 
 	// xác định thời lượng giây
-	
 	get_sec_d (duration);
 
 	// thay đổi thời lượng DOM

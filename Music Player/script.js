@@ -13,11 +13,11 @@ const durTime = document.querySelector('#durTime');
 
 // Tên bài hát
 const songs =['Chỉ Muốn Đến Em Thật Gần', 
-							'Đám Cưới Nha', 
-							'Em Là Nhất',
-							'Hồng Nhan',
-							'Vì Anh Là Gió',
-							'Yêu Đơn Phương Là Gì'];
+			  'Đám Cưới Nha', 
+			  'Em Là Nhất',
+			  'Hồng Nhan',
+			  'Vì Anh Là Gió',
+			  'Yêu Đơn Phương Là Gì'];
 
 // Theo dõi bài hát
 let songIndex = 2;
